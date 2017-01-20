@@ -149,6 +149,17 @@ class User extends Model
         }
         return false;
     }
+    
+    /*
+     * How many days left until end
+     */
+    public function restDays()
+    {
+        $today = new DateTime('now'); 
+        $end = new DateTime($this->attributes['end_date']);
+        $today->diff($end);
+        return $diff->days;
+    }
 
     /*
      * @param traffic 单位 MB
